@@ -1,23 +1,12 @@
-import { useEffect } from 'react';
+import React from 'react';
 
 const AudioPlayer = () => {
-  useEffect(() => {
-    // Створення нового аудіоблоку
-    const audio = new Audio('/energetic-rock.mp3');
-
-    // Відтворити аудіо
-    audio.play().catch((error) => {
-      console.error("Помилка:", error);
-    });
-
-    // Очищення при розмонтуванні компонента
-    return () => {
-      audio.pause(); // Зупинити відтворення
-      audio.currentTime = 0; // Скинути час
-    };
-  }, []); // Порожній масив залежностей, щоб виконати ефект лише один раз
-	
-  return null;
+    return (
+        <audio autoPlay loop>
+            <source src="/energetic-rock.mp3" type="audio/mpeg" />
+            Ваш браузер не поддерживает аудио.
+        </audio>
+    );
 };
 
 export default AudioPlayer;
