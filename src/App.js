@@ -17,10 +17,11 @@ const greetings = [
 
 const App = () => {
     const [greeting, setGreeting] = useState("");
+    const [greetingIndex, setGreetingIndex] = useState(0);
 
     // Налаштування конфетті
     const duration = 10 * 1000; // тривалість анімації
-    const defaults = { startVelocity: 10, spread: 360, ticks: 60, zIndex: 0 };
+    const defaults = { startVelocity: 10, spread: 360, ticks: 70, zIndex: 0 };
 
     // Функція для випадкового значення
     const randomInRange = (min, max) => Math.random() * (max - min) + min;
@@ -37,21 +38,23 @@ const App = () => {
                 ...defaults,
                 particleCount,
                 origin: { x: randomInRange(0.1, 0.3), y: Math.random() - 0.2 },
+                gravity: 0.5,  // Зменшена гравітація, щоб частинки летіли повільніше
             });
             confetti({
                 ...defaults,
                 particleCount,
                 origin: { x: randomInRange(0.7, 0.9), y: Math.random() - 0.2 },
+                 gravity: 0.5,  // Зменшена гравітація, щоб частинки летіли повільніше
             });
         }, 250);
     };
 
     // Отримання випадкового привітання
     const getRandomGreeting = () => {
-        const randomIndex = Math.floor(Math.random() * greetings.length);
-        setGreeting(greetings[randomIndex]);
-        triggerConfetti(); // Запускає анімацію конфетті
-    };
+    setGreeting(greetings[greetingIndex]); // Установить текущее приветствие
+    triggerConfetti(); // Запустить анимацию конфетти
+    setGreetingIndex((prevIndex) => (prevIndex + 1) % greetings.length); // Увеличить индекс и сбросить его при необходимости
+};
 
     // Виклик getRandomGreeting при завантаженні компонента
     useEffect(() => {
