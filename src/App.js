@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import confetti from 'canvas-confetti';
 import './App.css';
+import AudioPlayer from './components/audio';
 
 const greetings = [
     "Хай твій код завжди компілюється без багів, а життя — без помилок! З днем народження!",
@@ -63,6 +64,7 @@ const App = () => {
 
     return (
         <div className="flex flex-col justify-center items-center h-screen text-center p-5 bg-yellow-100">
+            <AudioPlayer />
             <p className="text-2xl font-bold z-10 text-black mb-7">{greeting}</p>
             <div>
                 <img src="/Animation.gif" width="112" height="111" alt=""/>
