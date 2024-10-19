@@ -65,6 +65,7 @@ const App = () => {
     return (
         <div className="flex flex-col justify-center items-center h-screen text-center p-5 bg-yellow-100">
             <AudioPlayer />
+            <img className="mb-10" src="./photo.png" width="255" height="357" alt=""/>
             <p className="text-2xl font-bold z-10 text-black mb-7">{greeting}</p>
             <div>
                 <img src="/Animation.gif" width="112" height="111" alt=""/>
